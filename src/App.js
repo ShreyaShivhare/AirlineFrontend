@@ -56,10 +56,10 @@ function App() {
         </div>
       </Router>
     </div>
-    <footer className="Footer">
+    {/* <footer className="Footer">
         <Footer></Footer>
 
-      </footer> 
+      </footer>  */}
     </div>
   );
 }
