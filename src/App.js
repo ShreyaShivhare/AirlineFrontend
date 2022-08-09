@@ -15,6 +15,7 @@ import User from './User';
 import ViewUser from'./components/ViewUser';
 import ViewAdmin from'./components/ViewAdmin';
 import CreateAdmin from './components/CreateAdmin';
+import Footer from './components/Footer';
 
 library.add(faTrash,faEdit,faPlus,faList)
 
@@ -56,10 +57,10 @@ function App() {
         </div>
       </Router>
     </div>
-    {/* <footer className="Footer">
+    <footer className="Footer">
         <Footer></Footer>
 
-      </footer>  */}
+      </footer> 
     </div>
   );
 }
