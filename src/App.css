@@ -1,27 +1,39 @@
+*{
+  margin: 0%;
+  padding: 0%;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
+  height: 1000px;
+  justify-content: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: black;
+  min-height: 12vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  font-style: italic;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
+  width: 101%;
+  top: 0%;
+  background: cover;
 }
 
 .App-link {
@@ -35,4 +47,166 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.card{
+
+  margin-top: 330px;
+  border: none;
+  width: 400px;
+  height: 600px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  background: rgb(152, 165, 174);
+  background: linear-gradient(90deg , rgb(145, 174, 195) 0%, hsla(260, 29%, 36%, 1) 100%);
+}
+
+.container{
+  height: 1200px;
+}
+
+
+
+.card  h1
+{
+ color: rgba(227, 234, 240, 0.731);
+ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.card1  h1
+{
+ color: rgba(227, 234, 240, 0.731);
+ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.inputBx
+{
+  padding: 12px 20px;
+  width: 100%;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.btn1
+{
+  font-size: 22px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 500;
+  background-color: floralwhite;
+  color: #868686;
+  padding: 10px 30px;
+  border: 1px solid wheat;
+  display: inline-block;
+  border-radius: 25px;
+  margin: 30px 0px 10px;
+
+}
+.btn1:hover
+{
+  background-color: aliceblue;
+}
+.card1
+{
+   
+  margin-top: 350px;
+  border: none;
+  width: 480px;
+  height: 900px;
+  padding: 35px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  background: rgb(152, 165, 174);
+  background: linear-gradient(90deg , rgb(145, 174, 195) 0%, hsla(260, 29%, 36%, 1) 100%);
+}
+
+
+.form-control
+{
+  padding: 12px 20px;
+  width: 100%;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=text],
+input[type=password],
+input[type=email]
+{
+  width: 100%;
+  height: 120%;
+  padding:10px;
+  margin: 5px 0 5px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.card2
+{
+  margin-top: 20px;
+  width: 90%;
+  max-width: 440px;
+  color: #fff;
+  text-align: center;
+  padding: 50px 35px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card2 img{
+  width: 175px;
+  border-radius: 50%;
+}
+
+.card2 h2{
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 20px;
+  color: bisque;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style: inherit;
+}
+
+#nav-dropdown{
+  /* color: white;
+  font-weight: bold; */
+  color: white;
+display: flex;
+align-items: center;
+text-decoration: none;
+padding: 0 1rem;
+height: 160%;
+cursor: pointer;
+border-radius: 10px;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#nav-dropdown:hover
+{
+  color: orange;
+transition: all 0.2s ease-in-out;
+        background:white;
+        color:li;
+}
+
+.card-body
+{
+  margin-top: 500px;
+  padding-top: 100px;
+}
+
+.Footer{
+  background-color: #ddafae;
+  min-height: 5vh;
+  border-radius:7px;
+  
+  font-weight: bold;
 }
