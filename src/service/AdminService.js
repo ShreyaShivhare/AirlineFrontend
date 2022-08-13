@@ -1,29 +1,34 @@
 import axios from 'axios';
 
- const ADMINS_REST_API_URL='http://localhost:8085/ims/api/products'; 
+ const ADMINS_REST_API_URL='http://localhost:8085/airline/api/admin_login'; 
+//  const ADMINS_REST_API_URL='http://localhost:8085/airline/api/admin_login/delete_flight/{flightId}'; 
+//  const ADMINS_REST_API_URL='http://localhost:8085/ims/api/products'; 
 
 class AdminService {
-    getAdmin(){
-        return axios.get(ADMINS_REST_API_URL)
+\
+
+    //get all fights
+    getFlights(){ //getAdmin
+        return axios.get(ADMINS_REST_API_URL+'/all_flights')
     }
 
-    deleteAdmin(adminId){
-        return axios.delete(ADMINS_REST_API_URL+'/'+adminId);
+    // delete flight by id
+    deleteFlight(flightId){ //adminId
+        return axios.delete(ADMINS_REST_API_URL+'/delete_flight/'+flightId);
     }
-    getAdminById(adminId){
-        return axios.get(ADMINS_REST_API_URL+'/'+adminId);
+
+    getFlightById(flightId){ // getFlightById
+        return axios.get(ADMINS_REST_API_URL+'/all_flights/'+flightId);
     }
-    createAdmin(admin){
+
+    // add flight
+    createFlight(flight){ // createAdmin
         
-        return axios.post(ADMINS_REST_API_URL, admin);
+        return axios.post(ADMINS_REST_API_URL+'/add_flight', flight);
     }
  
-    updateAdmin(admin, adminId){
-        return axios.put(ADMINS_REST_API_URL + '/' + adminId, admin);
+    updateFlight(flight, flightId){ //func name = updateFlight second para- flightId
+        return axios.put(ADMINS_REST_API_URL +'/update_flight/'+flightId, flight);
     }
-
-
-    
-
 }
 export default new AdminService();
