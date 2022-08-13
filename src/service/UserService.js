@@ -8,9 +8,10 @@ class UserService{
     }
     getUserById(userId){
         return axios.get(USERS_REST_API_URL+'/'+userId);
-    
+    }
 
-}
+
+    
 }
 
 export default new UserService();

@@ -10,12 +10,19 @@ import About from './components/About';
 import Login from './components/Login';
 import Registration from './components/Registration';
 import AdLogin from './components/AdLogin';
-import Admin from './components/Admin';
+import Flights from './components/Flights';
 import User from './User';
 import ViewUser from'./components/ViewUser';
-import ViewAdmin from'./components/ViewAdmin';
-import CreateAdmin from './components/CreateAdmin';
+import ViewFlight from'./components/ViewFlight';
+import CreateFlight from './components/CreateFlight';
 import Footer from './components/Footer';
+import PassengerList from './components/PassengerList';
+// Booking
+import FlightDetails from './components/FlightDetails';
+import TicketBooking from './components/TicketBooking';
+import TicketDetails from './components/TicketDetails';
+import UserProfile from './components/UserProfile';
+import PaymentPage from './components/PaymentPage';
 
 library.add(faTrash,faEdit,faPlus,faList)
 
@@ -43,15 +50,27 @@ function App() {
         <Switch>
         <Route path='/' exact component={Home}></Route>
           <Route path='/about' component={About}></Route>
-          <Route path='/login' component={Login}></Route>
-          <Route path='/adlogin' component={AdLogin}></Route>
-          <Route path='/signup' component={Registration}></Route>
+          <Route path='/login_user' component={Login}></Route>
+          <Route path='/admin_login' component={AdLogin}></Route>
+          <Route path='/register_user' component={Registration}></Route>
+          {/* Flght CRUD  */}
+          <Route path='/flights'  component={Flights}></Route>
+          <Route path='/viewFlight/:flightId'  component={ViewFlight}></Route> 
+         
+          <Route path='/addFlight/:flightId'  component={CreateFlight}></Route>
 
-          <Route path='/admin'  component={Admin}></Route>
+          {/* Booking */}
+          <Route path='/passenger' component={PassengerList}></Route>
+          <Route path='/fightDetails/:id' component={FlightDetails}></Route>
+          <Route path='/booking' component={TicketBooking}></Route>
+          <Route path='/pdetails' component={TicketDetails}></Route>
+          <Route path='/userProfile' component={UserProfile}></Route>
+          <Route path='/payment'  component={PaymentPage}></Route>
+          
+          
+          
+          
           <Route path='/user'  component={User}></Route>
-          <Route path='/viewAdmin/:id'  component={ViewAdmin}></Route>
-          <Route path='/addAdmin/:id'  component={CreateAdmin}></Route>
-
           <Route path='/viewUser/:id'  component={ViewUser}></Route>
         </Switch>
         </div>

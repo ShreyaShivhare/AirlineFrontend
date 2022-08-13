@@ -7,9 +7,9 @@ background: black;
 height: 85px;
 display: flex;
 justify-content: space-between;
-padding: 0.2rem calc((100vw - 1000px) / 2);
+padding: 0.2rem calc((80vw - 1000px) / 2);
 z-index: 12;
-font-size : 20px;
+font-size : 15px;
 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 `;
  
@@ -50,7 +50,7 @@ color: grey;
 export const NavMenu = styled.div`
 display: flex;
 align-items: center;
-margin-right: -24px;
+margin-right: 24px; //-24
 /* Second Nav */
 /* margin-right: 24px; */
 /* Third Nav */
@@ -85,7 +85,7 @@ cursor: pointer;
 transition: all 0.2s ease-in-out;
 text-decoration: none;
 /* Second Nav */
-margin-left: 24px;
+
 &:hover {
     transition: all 0.2s ease-in-out;
     background: #fff;

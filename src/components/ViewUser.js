@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 
 // import UserService from "../service/UserService";
-import UserService from "./UserService";
+import UserService from "../service/UserService";
 
 export default class ViewProduct extends Component{
 

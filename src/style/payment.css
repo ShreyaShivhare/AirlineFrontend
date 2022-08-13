@@ -1,0 +1,16 @@
+.errorMsg {
+    color: #cc0000;
+    margin-bottom: 12px;
+  }
+
+.card-body{
+    background-color:#dbcecb;
+   
+}
+
+.container{
+  margin: 220px;
+  align-content: left;
+  
+}
+ 

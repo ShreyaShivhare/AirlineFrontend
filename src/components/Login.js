@@ -39,15 +39,17 @@ export default class Login extends Component {
 
     checkLogin(p) {
         p.preventDefault();
-        let dealer = { email: this.state.email, password: this.state.password };
-        console.log(JSON.stringify(dealer));
+        let user = { email: this.state.email, pass: this.state.pass };
+        console.log(JSON.stringify(user));
+        
 
-        AuthenticationService.loginDealer(dealer).then(response => {
+        AuthenticationService.loginUser(user).then(response => {
             console.log(response);
             if (response.data) {
                 this.setState({ showSuccessMessage: true })
                 this.setState({ hasLoginFailed: false })
-                this.props.history.push('/products')
+                this.props.history.push('/')
+                alert("Login Success");
             }
             else {
 
@@ -65,12 +67,10 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-
-
                 <div class="contentBx"  >
                     <div class="card" >
                         <h1>User Login</h1>
-                        <h6>Please enter Email & Password !!</h6>
+                        {/* <h6>Please enter Email & Password !!</h6> */}
                         <form>
                             {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
                             {this.state.showSuccessMessage && <div>Login Sucessful</div>}
@@ -81,15 +81,15 @@ export default class Login extends Component {
                             </div>
                             <div className="form-group">
                                 <label>Password:</label>
-                                <input type="password" name="password" className="form-control" value={this.state.password}
+                                <input type="password" name="pass" className="form-control" value={this.state.pass}
                                     onChange={this.handleChange} validations={[required]} />
                             </div>
                             <div class="inputBx">
-                                <button className="btn btn-success" style={{ fontSize: '20px' }} >Login</button>
+                                <button className="btn btn-success" onClick={this.checkLogin} style={{ fontSize: '20px' }} >Login</button>
                             </div>
 
                             <div >
-                                <p style={{ fontSize: '20px', fontFamily: '//#region ' }}>Don't have an account?<a href="/signup" style={{ color: 'black', fontStyle: 'normal', fontSize: '22px' }}>Sign up</a>
+                                <p style={{ fontSize: '20px', fontFamily: '//#region ' }}>Don't have an account?<a href="/register_user" style={{ color: 'black', fontStyle: 'normal', fontSize: '22px' }}>Sign up</a>
                                 </p>
                             </div>
                         </form>

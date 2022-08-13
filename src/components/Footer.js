@@ -4,8 +4,8 @@ function Footer(){
 
     return(
         <div>
-                    <h1> Jet Airways Ltd</h1>
-               <p> &copy;All Rights Reserved to Jet Airways ltd</p>
+                    <h1> Sharp Wings Ltd</h1>
+               <p> &copy;All Rights Reserved to Sharp Wings ltd</p>
            </div>
 
     );

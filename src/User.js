@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // import UserService from "../service/UserService";
-import UserService from "./components/UserService";
+import UserService from "./service/UserService";
 
 const SIZES = ["xs", "sm", "lg", "2x", "3x", "5x", "7x", "10x"];
 export default class User extends Component{
@@ -35,7 +35,7 @@ render(){
              </span></h1>
 
              <form className="Search">
-             <input type="text" placeholder="Flight name" name="search"></input>
+             {/* <input type="text" placeholder="Flight name" name="search"></input> */}
                 
                 <input type="text" placeholder="From" name="search"></input>
                 <input type="text" placeholder="To"   name="search"></input>

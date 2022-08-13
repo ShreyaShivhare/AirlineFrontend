@@ -16,7 +16,7 @@ export default class Registration extends Component {
         }
 
         this.handleChange = this.handleChange.bind(this);
-        this.registerDealer = this.registerDealer.bind(this);
+        this.registerUser = this.registerUser.bind(this);
 
     }
 
@@ -29,37 +29,35 @@ export default class Registration extends Component {
 
     }
 
-
-    registerDealer = (d) => {
+    registerUser = (d) => {
 
         d.preventDefault();
 
         if (this.validateForm()) {
             let fields = {};
-            fields["email"] = "";
+            fields["title"] = "";
             fields["fname"] = "";
             fields["lname"] = "";
-            fields["password"] = "";
+            fields["email"] = "";
+            fields["pass"] = "";
+            fields["cpass"] = "";
             fields["dob"] = "";
-            fields["phoneNo"] = "";
-            fields["street"] = "";
-            fields["city"] = "";
-            fields["pincode"] = "";
+            fields["contactNo"] = "";
+
             this.setState({ fields: fields });
 
             alert("Registered Successfully");
 
             d.preventDefault();
-            let dealer = {
-                email: this.state.fields.email, fname: this.state.fields.fname, lname: this.state.fields.lname,
-                password: this.state.fields.password, dob: this.state.fields.dob, phoneNo: this.state.fields.phoneNo,
-                street: this.state.fields.street, city: this.state.fields.city, pincode: this.state.fields.pincode
+            let user = {
+                title: this.state.fields.title, fname: this.state.fields.fname, lname: this.state.fields.lname, email: this.state.fields.email, pass: this.state.fields.pass, cpass: this.state.fields.cpass, dob: this.state.fields.dob, contactNo: this.state.fields.contactNo,
             };
+            // street: this.state.fields.street, city: this.state.fields.city, pincode: this.state.fields.pincode
 
-            console.log('Dealer => ' + JSON.stringify(dealer));
+            console.log('User => ' + JSON.stringify(user));
 
-            AuthenticationService.registerDealer(dealer).then(response => {
-                this.props.history.push('/login');
+            AuthenticationService.registerUser(user).then(response => {
+                this.props.history.push('/login_user');
             });
 
         }
@@ -71,6 +69,10 @@ export default class Registration extends Component {
         let errors = {};
         let formIsValid = true;
 
+        if (!fields["title"]) {
+            formIsValid = false;
+            errors["title"] = "*Please enter the title Mr/Mrs.";
+        }
         if (!fields["fname"]) {
             formIsValid = false;
             errors["fname"] = "*Please enter your First Name.";
@@ -110,46 +112,59 @@ export default class Registration extends Component {
             }
         }
 
-        if (!fields["phoneNo"]) {
+
+        if (!fields["pass"]) {
             formIsValid = false;
-            errors["phoneNo"] = "*Please enter your mobile no.";
+            errors["pass"] = "*Please enter your password.";
         }
 
-        if (typeof fields["phoneNo"] !== "undefined") {
-            if (!fields["phoneNo"].match(/^[0-9]{10}$/)) {
+        if (typeof fields["pass"] !== "undefined") {
+            if (!fields["pass"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/)) {
                 formIsValid = false;
-                errors["phoneNo"] = "*Please enter valid mobile no.";
+                errors["pass"] = "*Please enter secure and strong password.";
             }
         }
 
-        if (!fields["password"]) {
+        if (!fields["cpass"]) {
             formIsValid = false;
-            errors["password"] = "*Please enter your password.";
+            errors["cpass"] = "*Please Confirm your password.";
         }
 
-        if (typeof fields["password"] !== "undefined") {
-            if (!fields["password"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/)) {
+        if (typeof fields["cpass"] !== "undefined") {
+            if (!fields["cpass"].match(fields["password"] && (/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/))) {
                 formIsValid = false;
-                errors["password"] = "*Please enter secure and strong password.";
+                errors["cpass"] = "*Please Enter Confirm passsword.";
             }
         }
 
-        if (!fields["street"]) {
+        if (!fields["dob"]) {
             formIsValid = false;
-            errors["street"] = "*Please enter your Street.";
+            errors["dob"] = "*Please enter your DOB.";
         }
 
-        if (!fields["pincode"]) {
+        if (!fields["contactNo"]) {
             formIsValid = false;
-            errors["pincode"] = "*Please enter Pin Code";
+            errors["contactNo"] = "*Please enter your mobile no.";
         }
 
-        if (typeof fields["pincode"] !== "undefined") {
-            if (!fields["pincode"].match(/^[0-9]{6}$/)) {
+        if (typeof fields["contactNo"] !== "undefined") {
+            if (!fields["contactNo"].match(/^[0-9]{10}$/)) {
                 formIsValid = false;
-                errors["phoneNo"] = "*Please enter valid Pin Code";
+                errors["contactNo"] = "*Please enter valid mobile no.";
             }
         }
+
+        // if (!fields["pincode"]) {
+        //     formIsValid = false;
+        //     errors["pincode"] = "*Please enter Pin Code";
+        // }
+
+        // if (typeof fields["pincode"] !== "undefined") {
+        //     if (!fields["pincode"].match(/^[0-9]{6}$/)) {
+        //         formIsValid = false;
+        //         errors["phoneNo"] = "*Please enter valid Pin Code";
+        //     }
+        // }
 
         this.setState({
             errors: errors
@@ -167,86 +182,71 @@ export default class Registration extends Component {
             <div>
                 <br></br>
                 <div class="contentBx">
-					<div class="card1" >
-						<h1>Registration</h1>
-						<h5 style={{fontStyle:'inherit', marginBottom:"20px"}}>Please create your account!!</h5>
-
-                            {/* <div className="card-body"> */}
-                                <form method="post" name="userRegistrationForm" onSubmit={this.registerDealer}>
-                                    <div className="form-group">
-                                        <label> Email: </label>
-                                        <input placeholder="Email Id" name="email" className="form-control"
-                                            value={this.state.fields.email} onChange={this.handleChange} />
-                                        <div className="errorMsg">{this.state.errors.email}</div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label> First Name: </label>
-                                        <input placeholder="First Name" name="fname" className="form-control"
-                                            value={this.state.fields.fname} onChange={this.handleChange} />
-                                        <div className="errorMsg">{this.state.errors.fname}</div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label> Last Name: </label>
-                                        <input placeholder="Last Name" name="lname" className="form-control"
-                                            value={this.state.fields.lname} onChange={this.handleChange} />
-                                        <div className="errorMsg">{this.state.errors.lname}</div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label> Password: </label>
-                                        <input type="password" placeholder="Password" name="password" className="form-control"
-                                            value={this.state.fields.password} onChange={this.handleChange} />
-                                        <div className="errorMsg">{this.state.errors.password}</div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label> Date of Birth: </label>
-                                        <input type="date" name="dob" className="form-control"
-                                            value={this.state.fields.dob} onChange={this.handleChange} />
-                                        <div className="errorMsg">{this.state.errors.dob}</div>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label> Phone : </label>
-                                        <input placeholder="Phone" name="phoneNo" className="form-control"
-                                            value={this.state.fields.phoneNo} onChange={this.handleChange} />
-                                        <div className="errorMsg">{this.state.errors.phoneNo}</div>
-                                    </div>
-                                    {/* <div className="form-group">
-                                        <label> Street : </label>
-                                        <input placeholder="Street" name="street" className="form-control"
-                                            value={this.state.fields.street} onChange={this.handleChange} />
-                                        <div className="errorMsg">{this.state.errors.street}</div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label> City : </label>
-                                        <select name='city' className="form-control"
-                                            value={this.state.fields.city} onChange={this.handleChange}>
-                                            <option>Bangalore</option>
-                                            <option>Chennai</option>
-                                            <option>Hyderabad</option>
-                                            <option>Kolkatta</option>
-                                            <option>Mumbai</option>
-                                            <option>New Delhi</option>
-                                        </select>
-
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label> Pin Code : </label>
-                                        <input placeholder="Pin code" name="pincode" className="form-control"
-                                            value={this.state.fields.pincode} onChange={this.handleChange} />
-                                        <div className="errorMsg">{this.state.errors.pincode}</div>
-                                    </div> */}
-                                    <input type="submit" className="btn btn-success" value="Register" />
-
-                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
-                                </form>
+                    <div class="card1">
+                        <h1>Registration</h1>
+                        <form method="post" name="userRegistrationForm" onSubmit={this.registerUser}>
+                            <div className="form-group">
+                                <label> Title: </label>
+                                <input placeholder="Mr/Mrs" name="title" className="form-control"
+                                    value={this.state.fields.title} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.title}</div>
                             </div>
-                        </div>
+
+
+                            <div className="form-group">
+                                <label> First Name: </label>
+                                <input placeholder="First Name" name="fname" className="form-control"
+                                    value={this.state.fields.fname} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.fname}</div>
+                            </div>
+                            <div className="form-group">
+                                <label> Last Name: </label>
+                                <input placeholder="Last Name" name="lname" className="form-control"
+                                    value={this.state.fields.lname} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.lname}</div>
+                            </div>
+                            <div className="form-group">
+                                <label> Email: </label>
+                                <input placeholder="Email Id" name="email" className="form-control"
+                                    value={this.state.fields.email} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.email}</div>
+                            </div>
+                            <div className="form-group">
+                                <label> Password: </label>
+                                <input type="password" placeholder="Password" name="pass" className="form-control"
+                                    value={this.state.fields.password} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.pass}</div>
+                            </div>
+                            <div className="form-group">
+                                <label> Confirm Password: </label>
+                                <input type="password" placeholder="Confirm Password" name="cpass" className="form-control"
+                                    value={this.state.fields.cpass} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.cpass}</div>
+                            </div>
+
+                            <div className="form-group">
+                                <label> Date of Birth: </label>
+                                <input type="date" name="dob" className="form-control"
+                                    value={this.state.fields.dob} onChange={this.handleChange} pattern="yyyy-mm-dd" />
+                                <div className="errorMsg">{this.state.errors.dob}</div>
+                            </div>
+
+                            <div className="form-group">
+                                <label> Phone : </label>
+                                <input placeholder="Phone" name="contactNo" className="form-control"
+                                    value={this.state.fields.contactNo} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.contactNo}</div>
+                            </div>
+                            <br></br>
+                            <br></br>
+
+                            <input type="submit" className="btn btn-success" value="Register" />
+
+                            <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
+                        </form>
                     </div>
-
-                // </div>
-            
-
+                </div>
+            </div>
         );
     }
 }

@@ -5,7 +5,7 @@ import axios from 'axios';
 //  const ADMINS_REST_API_URL='http://localhost:8085/ims/api/products'; 
 
 class AdminService {
-\
+
 
     //get all fights
     getFlights(){ //getAdmin
@@ -18,13 +18,14 @@ class AdminService {
     }
 
     getFlightById(flightId){ // getFlightById
-        return axios.get(ADMINS_REST_API_URL+'/all_flights/'+flightId);
+       
+        return axios.get('http://localhost:8085/airline/api/admin_login/all_flights'+'/'+flightId);
     }
 
     // add flight
     createFlight(flight){ // createAdmin
-        
-        return axios.post(ADMINS_REST_API_URL+'/add_flight', flight);
+        alert("Hello")
+        return axios.post('http://localhost:8085/airline/api/admin_login/all_flights', flight);
     }
  
     updateFlight(flight, flightId){ //func name = updateFlight second para- flightId
