@@ -90,7 +90,7 @@ editFlight(flightId){
                                 {/* added duration */}
                                 <td> {f.duration} </td>
                                 <td> {f.cabin} </td>
-                                {/* added economy bussiness */}
+                                {/* added economy bussiness class seats*/}
                                 <td> {f.economy} </td>
                                 <td> {f.bussiness} </td>
                                 <td> {f.flightCharge} </td>

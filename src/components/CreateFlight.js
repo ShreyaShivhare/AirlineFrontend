@@ -229,7 +229,7 @@ export default  class CreateFlight extends Component{
                                                 value={this.state.economy} onChange={this.changeEconomyHandler}/>
                                         </div>
 
-                                        {/* added */}
+                                        {/* added bussiness class*/}
                                         <div className = "form-group">
                                             <label> Bussiness Class Seats: </label>
                                             <input placeholder="Bussiness Class" name="bussiness" className="form-control" 

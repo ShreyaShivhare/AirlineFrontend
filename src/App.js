@@ -59,7 +59,7 @@ function App() {
           <Route path='/addFlight/:flightId'  component={CreateFlight}></Route>
 
           {/* Booking */}
-          {/* added flight id in url */}
+          {/* added flight id in url instead of id */}
           <Route path='/passenger/:flightId' component={PassengerList}></Route>
           <Route path='/fightDetails/:id' component={FlightDetails}></Route>
           <Route path='/booking' component={TicketBooking}></Route>

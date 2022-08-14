@@ -49,7 +49,6 @@ export default class User extends Component {
     this.displayFlight();
   }
   displayFlight() {
-    // f.preventDefault();
     SearchService.searchFligthByParams(this.state.departureAirport, this.state.arrivalAirport,
       this.state.departureDate).then((response) => {
         // console.log(JSON.stringify(response));
