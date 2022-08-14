@@ -32,12 +32,13 @@ import {
                 </NavMenu>
                 <NavBtn>
                     {/* <NavBtnLink to='/login'>Login</NavBtnLink> */}
-                    <NavDropdown title="Login" id="nav-dropdown" style={{color:'Black'}}>
+                    <NavBtnLink to='/admin_login'>Admin Login</NavBtnLink>
+                    {/* <NavDropdown title="Login" id="nav-dropdown" style={{color:'Black'}}>
                         <NavDropdown.Item href='login_user'>User Login</NavDropdown.Item>
                         <NavDropdown.Item href="admin_login">
                             Admin Login
                         </NavDropdown.Item>
-                    </NavDropdown>
+                    </NavDropdown> */}
                     <NavBtnLink to='/register_user'>SignUp</NavBtnLink>
                 </NavBtn>
             </Nav>

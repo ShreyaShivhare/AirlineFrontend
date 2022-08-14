@@ -7,11 +7,10 @@ import { faTrash, faPlus, faEdit,faCamera,faList } from "@fortawesome/free-solid
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
-import Login from './components/Login';
 import Registration from './components/Registration';
 import AdLogin from './components/AdLogin';
 import Flights from './components/Flights';
-import User from './User';
+import User from './components/User';
 import ViewUser from'./components/ViewUser';
 import ViewFlight from'./components/ViewFlight';
 import CreateFlight from './components/CreateFlight';
@@ -50,7 +49,7 @@ function App() {
         <Switch>
         <Route path='/' exact component={Home}></Route>
           <Route path='/about' component={About}></Route>
-          <Route path='/login_user' component={Login}></Route>
+
           <Route path='/admin_login' component={AdLogin}></Route>
           <Route path='/register_user' component={Registration}></Route>
           {/* Flght CRUD  */}

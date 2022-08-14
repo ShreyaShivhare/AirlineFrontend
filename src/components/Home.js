@@ -1,68 +1,99 @@
 import React, { Component } from "react";
+import AuthenticationService from "../service/AuthenticationService";
 
 const required = (value) => {
   if (!value) {
-    return (
-      <div className="invalid-feedback d-block">
-        This field is required!
-      </div>
-    );
+      return (
+          <div className="invalid-feedback d-block">
+              This field is required!
+          </div>
+      );
   }
-}; 
-
-export default class Home extends Component {
+};
+export default class Home extends Component{
   constructor(props) {
-      super(props)
+    super(props)
 
-      this.state = {
-          departureAirport: '',
-          arrivalAirport: '',
-          departureDate: ''
-      }
+    this.state = {
+        email: '',
+        password: '',
+        hasLoginFailed: false,
+        showSuccessMessage: false
+    }
 
-      // this.handleChange = this.handleChange.bind(this);
-      // this.checkLogin = this.checkLogin.bind(this);
-  }
+    this.handleChange = this.handleChange.bind(this);
+    this.checkLogin = this.checkLogin.bind(this);
+}
 
+handleChange(event) {
+    this.setState(
+        {
+            [event.target.name]
+                : event.target.value
+        }
+    )
+}
 
+checkLogin(p) {
+    p.preventDefault();
+    let user = { email: this.state.email, pass: this.state.pass };
+    console.log(JSON.stringify(user));
+    
 
-render(){
-  return (
-    <div class="card2" data-tilt>
-      <img src='images/img.jpg'></img>
-            <h2>Find Flight:</h2>
-            <form>
-            <div className = "form-group">
-                        <label>From:</label>  
-                        <input type="text" name="departureAirport" className="form-control" value={this.state.departureAirport} 
-                        onChange={this.handleChange} validations={[required]} />
-                    </div>
+    AuthenticationService.loginUser(user).then(response => {
+        console.log(response);
+        if (response.data) {
+            this.setState({ showSuccessMessage: true })
+            this.setState({ hasLoginFailed: false })
+            this.props.history.push('/user')
+            alert("Login Success");
+        }
+        else {
 
-                    <div className = "form-group">
-                        <label>To:</label>  
-                        <input type="text" name="arrivalAirport" className="form-control" value={this.state.arrivalAirport} 
-                        onChange={this.handleChange} validations={[required]} />
-                    </div>
+            this.setState({ showSuccessMessage: false })
+            this.setState({ hasLoginFailed: true })
 
-                    <div className = "form-group">
-                        <label>Departure Date:</label>  
-                        <input type="Date" name="departureDate" className="form-control" value={this.state.departureDate} 
-                        onChange={this.handleChange} validations={[required]} />
-                    </div>
-                    <button className="btn btn-success" onClick={this.checkLogin}>Search</button>
-            </form>
+        }
+    }).catch(() => {
+        this.setState({ showSuccessMessage: false })
+        this.setState({ hasLoginFailed: true })
+
+    });
+}
+
+render() {
+    return (
+        <div>
+            <div class="contentBx"  >
+                <div class="card" >
+                    <h1>User Login</h1>
+                    {/* <h6>Please enter Email & Password !!</h6> */}
+                    <form>
+                        {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                        {this.state.showSuccessMessage && <div>Login Sucessful</div>}
+                        <div className="form-group">
+                            <label>User Name:</label>
+                            <input type="text" name="email" className="form-control" value={this.state.email}
+                                onChange={this.handleChange} validations={[required]} />
+                        </div>
+                        <div className="form-group">
+                            <label>Password:</label>
+                            <input type="password" name="pass" className="form-control" value={this.state.pass}
+                                onChange={this.handleChange} validations={[required]} />
+                        </div>
+                        <div class="inputBx">
+                            <button className="btn btn-success" onClick={this.checkLogin} style={{ fontSize: '20px' }} >Login</button>
+                        </div>
+
+                        <div >
+                            <p style={{ fontSize: '20px', fontFamily: '//#region ' }}>Don't have an account?<a href="/register_user" style={{ color: 'black', fontStyle: 'normal', fontSize: '22px' }}>Sign up</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-  );
+    );
 }
 }
 
-      {/* <b style={{ fontSize: '24px', fontFamily: 'monospace', fontStyle: "inherit", color:'grey' }}>From:</b><input type="text" name="departureAirport" />
-      <b style={{ fontSize: '24px', fontFamily: 'monospace', fontStyle: "inherit", color:'grey' }}>To:</b><input type="text" name="arrivalAirport" />
-      <b style={{ fontSize: '24px', fontFamily: 'monospace', fontStyle: "inherit", color:'grey' }}>DepartureDate:</b><input type="text" name="departureDate"/>
-   <button className='btn1'>Search</button> */}
-      
-
-{/* <b>From:</b><input type="text" name="from" onChange={(event)=>{this.from=event.target.value}}/>
-<b>To:</b><input type="text" name="to" onChange={(event)=>{this.to=event.target.value}}/>
-<b>DepartureDate:</b><input type="text" name="departureDate" onChange={(event)=>{this.departureDate=event.target.value}}/>
-<button onClick={this.handleSubmit.bind(this)}>Search</button> */}

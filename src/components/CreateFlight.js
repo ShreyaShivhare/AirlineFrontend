@@ -35,7 +35,7 @@ export default  class CreateFlight extends Component{
     }
     componentDidMount(){
         
-        if(this.state.id === '_add'){
+        if(this.state.flightId === '_add'){
             return
         }
         else{
@@ -62,16 +62,16 @@ export default  class CreateFlight extends Component{
             departureDate:this.state.departureDate, arrivalDate:this.state.arrivalDate, departureTime:this.state.departureTime,
         arrivalTime:this.state.arrivalTime,cabin:this.state.cabin, flightCharge:this.state.flightCharge};
         console.log('flight => ' + JSON.stringify(flight));
-
         
-        if(this.state.id === '_add'){
+        if(this.state.flightId === '_add'){
             AdminService.createFlight(flight).then(response =>{
                 alert("hello")
                 console.log(response.data)
                 
                 this.props.history.push('/flights');
             });
-        }else{
+        }
+        else{
             AdminService.updateFlight(flight, this.state.flightId).then( response => {
                 console.log(response.data)
                 this.props.history.push('/flights');
@@ -125,7 +125,7 @@ export default  class CreateFlight extends Component{
             return <h1 className="text-center">Update Flight</h1>
         }
     }
-    render(){
+    render() {
         return(
             <div>
                 <br></br>
@@ -155,13 +155,13 @@ export default  class CreateFlight extends Component{
                                         
                                         <div className = "form-group">
                                             <label> Departure Date: </label>
-                                            <input placeholder="departureDate" name="departureDate" className="form-control" 
+                                            <input type="date" placeholder="departureDate" name="departureDate" className="form-control" 
                                                 value={this.state.departureDate} onChange={this.changedepartureDateHandler}/>
                                         </div>
                                         
                                         <div className = "form-group">
                                             <label> Arrival Date: </label>
-                                            <input placeholder="arrivalDate" name="arrivalDate" className="form-control" 
+                                            <input type="date" placeholder="arrivalDate" name="arrivalDate" className="form-control" 
                                                 value={this.state.arrivalDate} onChange={this.changearrivalDateHandler}/>
                                         </div>
                                         

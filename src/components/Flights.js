@@ -48,7 +48,7 @@ editFlight(flightId){
 
                  <br></br>
                  <div className="row">
-                <table className = "table table-striped  table-dark  ">
+                <table className = "table table-striped  table-dark">
                     <thead>
                         <tr>
                         <td>Flight Id</td>

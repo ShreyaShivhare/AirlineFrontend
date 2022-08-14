@@ -42,7 +42,7 @@ export default class AdLogin extends Component {
             if (response.data) {
                 this.setState({ showSuccessMessage: true })
                 this.setState({ hasLoginFailed: false })
-                this.props.history.push('/admin')
+                this.props.history.push('/flights')
                 alert("Admin Login Success!")
             }
             else {

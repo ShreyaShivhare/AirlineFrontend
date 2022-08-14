@@ -25,7 +25,7 @@ class AdminService {
     // add flight
     createFlight(flight){ // createAdmin
         alert("Hello")
-        return axios.post('http://localhost:8085/airline/api/admin_login/all_flights', flight);
+        return axios.post('http://localhost:8085/airline/api/admin_login/add_flight', flight);
     }
  
     updateFlight(flight, flightId){ //func name = updateFlight second para- flightId

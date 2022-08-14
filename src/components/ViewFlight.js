@@ -26,25 +26,25 @@ export default class ViewFlight extends Component{
 
     render(){
         return(
-            <div>
+            <div class="card4">
                 <br></br>
                   <div class="contentBx"  >
                     <div class="card" style={{height:'60px'}}>
                         <h3 className = "text-center"> View Flight Details</h3>
-                            <label> Flight Number: </label>
-                            <div> { this.state.flight.flightNumber }</div>
+                            {/* <label>  </label> */}
+                            <div>Flight Number: { this.state.flight.flightNumber }</div>
                         </div>
                         <div className = "row">
-                            <label> Departure Airport: </label>
-                            <div> { this.state.flight.departureAirport }</div>
+                            {/* <label>  </label> */}
+                            <div>Departure Airport: { this.state.flight.departureAirport }</div>
                         </div>
                         <div className = "row">
-                            <label> Arrival Airport: </label>
-                            <div> { this.state.flight.destinationAirport }</div>
+                            {/* <label>  </label> */}
+                            <div>Arrival Airport: { this.state.flight.destinationAirport }</div>
                         </div>
                         <div className = "row">
-                            <label> Flight Charge: </label>
-                            <div> { this.state.flight.flightCharge }</div>
+                            {/* <label>  </label> */}
+                            <div>Flight Charge: { this.state.flight.flightCharge }</div>
                         </div>
                     </div>
                 </div>
