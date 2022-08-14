@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = 'http://localhost:8085/airline/api/user/search_flight';
 
-class SearchService {s
+class SearchService {
 
     searchFligthByParams(departureAirport, arrivalAirport, departureDate) {
         // alert("hello");

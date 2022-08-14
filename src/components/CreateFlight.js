@@ -13,13 +13,17 @@ export default  class CreateFlight extends Component{
             
             flightId: this.props.match.params.flightId ,
             flightNumber: '' ,
-            departureAirport: '' , //departure airport
-            destinationAirport:'' , // //destination airport
-            departureDate: '' , // departure Date
-            arrivalDate: '' , // arrival Date
-            departureTime:'' , // departureTime
-            arrivalTime:'' , // arrivalTime
+            flightName:'',
+            departureAirport: '' , 
+            destinationAirport:'' ,
+            departureDate: '' ,
+            arrivalDate: '' , 
+            departureTime:'' ,
+            arrivalTime:'' ,
+            duration:'', //added duration
             cabin: '',
+            economy:'', //added
+            bussiness:'',//added
             flightCharge:''
         }
         this.saveOrUpdateFlight=this.saveOrUpdateFlight.bind(this);
@@ -42,13 +46,17 @@ export default  class CreateFlight extends Component{
             AdminService.getFlightById(this.state.flightId).then( (response) =>{
                 let flight = response.data;
                 this.setState({flightNumber: flight.flightNumber,
+                    flightName:flight.flightName, //added
                     departureAirport: flight.departureAirport,
                     destinationAirport : flight.destinationAirport,
                     departureDate : flight.departureDate,
                     arrivalDate : flight.arrivalDate,
                     departureTime : flight.departureTime,
                     arrivalTime : flight.arrivalTime,
+                    duration: flight.duration, //added
                     cabin:flight.cabin,
+                    economy: flight.economy, //added
+                    bussiness: flight.bussiness, //added
                     flightCharge:flight.flightCharge
                     
                 });
@@ -58,9 +66,9 @@ export default  class CreateFlight extends Component{
 
     saveOrUpdateFlight = (f) => {
         f.preventDefault();
-        let flight = {flightNumber: this.state.flightNumber, departureAirport: this.state.departureAirport,destinationAirport:this.state.destinationAirport,
+        let flight = {flightNumber: this.state.flightNumber, flightName:this.state.flightName, departureAirport: this.state.departureAirport,destinationAirport:this.state.destinationAirport,
             departureDate:this.state.departureDate, arrivalDate:this.state.arrivalDate, departureTime:this.state.departureTime,
-        arrivalTime:this.state.arrivalTime,cabin:this.state.cabin, flightCharge:this.state.flightCharge};
+        arrivalTime:this.state.arrivalTime,duration:this.state.duration,cabin:this.state.cabin,economy:this.state.economy,bussiness: this.state.bussiness, flightCharge:this.state.flightCharge};
         console.log('flight => ' + JSON.stringify(flight));
         
         if(this.state.flightId === '_add'){
@@ -86,6 +94,10 @@ export default  class CreateFlight extends Component{
     changeflightNumberHandler= (event) => {
         this.setState({flightNumber: event.target.value});
     }
+    //added
+    changeflightNameHandler= (event) => {
+        this.setState({flightName: event.target.value});
+    }
 
     changeFromHandler= (event) => {
         this.setState({departureAirport: event.target.value});
@@ -106,8 +118,20 @@ export default  class CreateFlight extends Component{
     changearrivalTimeHandler= (event) => {
         this.setState({arrivalTime: event.target.value});
     }
+    //added
+    changedurationHandler= (event) => {
+        this.setState({duration: event.target.value});
+    }
     changecabinHandler= (event) => {
         this.setState({cabin: event.target.value});
+    }
+    //added
+    changeEconomyHandler= (event) => {
+        this.setState({economy: event.target.value});
+    }
+    //added
+    changeBussinessHandler= (event) => {
+        this.setState({bussiness: event.target.value});
     }
     changeflightChargeHandler= (event) => {
         this.setState({flightCharge: event.target.value});
@@ -142,6 +166,14 @@ export default  class CreateFlight extends Component{
                                             <input placeholder="Flight Number" name="flightNumber" className="form-control" 
                                                 value={this.state.flightNumber} onChange={this.changeflightNumberHandler}/>
                                         </div>
+
+                                        {/* added */}
+                                        <div  className = "form-group">
+                                            <label> Flight Name: </label>
+                                            <input placeholder="Flight Name" name="flightName" className="form-control" 
+                                                value={this.state.flightName} onChange={this.changeflightNameHandler}/>
+                                        </div>
+                                        
                                         <div className = "form-group">
                                             <label> From: </label>
                                             <input placeholder=" departureAirport" name="departureAirport" className="form-control" 
@@ -149,38 +181,59 @@ export default  class CreateFlight extends Component{
                                         </div>
                                         <div className = "form-group">
                                             <label> To: </label>
-                                            <input placeholder="destinationAirport" name="destinationAirport" className="form-control" 
+                                            <input placeholder="Destination Airport" name="destinationAirport" className="form-control" 
                                                 value={this.state.destinationAirport} onChange={this.changetoHandler}/>
                                         </div>
                                         
                                         <div className = "form-group">
                                             <label> Departure Date: </label>
-                                            <input type="date" placeholder="departureDate" name="departureDate" className="form-control" 
+                                            <input type="date" placeholder="Departure Date" name="departureDate" className="form-control" 
                                                 value={this.state.departureDate} onChange={this.changedepartureDateHandler}/>
                                         </div>
                                         
                                         <div className = "form-group">
                                             <label> Arrival Date: </label>
-                                            <input type="date" placeholder="arrivalDate" name="arrivalDate" className="form-control" 
+                                            <input type="date" placeholder="Arrival Date" name="arrivalDate" className="form-control" 
                                                 value={this.state.arrivalDate} onChange={this.changearrivalDateHandler}/>
                                         </div>
                                         
                                         <div className = "form-group">
                                             <label> Departure Time: </label>
-                                            <input placeholder="departureTime" name="departureTime" className="form-control" 
+                                            <input placeholder="Departure Time" name="departureTime" className="form-control" 
                                                 value={this.state.departureTime} onChange={this.changedepartureTimeHandler}/>
                                         </div>
                                         
                                         <div className = "form-group">
                                             <label> Arrival Time: </label>
-                                            <input placeholder="arrivalTime" name="arrivalTime" className="form-control" 
+                                            <input placeholder="Arrival Time" name="arrivalTime" className="form-control" 
                                                 value={this.state.arrivalTime} onChange={this.changearrivalTimeHandler}/>
+                                        </div>
+
+                                        {/* added */}
+                                        <div className = "form-group">
+                                            <label> Duration: </label>
+                                            <input placeholder="Flight Duration" name="duration" className="form-control" 
+                                                value={this.state.duration} onChange={this.changedurationHandler}/>
                                         </div>
                                         
                                         <div className = "form-group">
                                             <label> Cabin: </label>
                                             <input placeholder="cabin" name="cabin" className="form-control" 
                                                 value={this.state.cabin} onChange={this.changecabinHandler}/>
+                                        </div>
+                                        
+                                        {/* added */}
+                                        <div className = "form-group">
+                                            <label> Economy Class Seats: </label>
+                                            <input placeholder="Economy Class" name="economy" className="form-control" 
+                                                value={this.state.economy} onChange={this.changeEconomyHandler}/>
+                                        </div>
+
+                                        {/* added */}
+                                        <div className = "form-group">
+                                            <label> Bussiness Class Seats: </label>
+                                            <input placeholder="Bussiness Class" name="bussiness" className="form-control" 
+                                                value={this.state.bussiness} onChange={this.changeBussinessHandler}/>
                                         </div>
                                         
                                         <div className = "form-group">

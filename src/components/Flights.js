@@ -41,7 +41,7 @@ editFlight(flightId){
     render(){
         return(
             <div>
-                <h1 className = "text-center"><span style={{fontWeight:'bold',color:"greenyellow"}}> Flight Details </span></h1>
+                <h1 className = "text-center"><span style={{fontWeight:'bold',color:"#117fe0"}}> Flight Details </span></h1>
                 <div className = "row">
                     <button className="btn btn-primary" onClick={this.addFlight}> Add Flight</button>
                  </div>
@@ -53,13 +53,20 @@ editFlight(flightId){
                         <tr>
                         <td>Flight Id</td>
                             <td>Flight Number</td>
+                            {/* added flightName */}
+                            <td>Flight Name</td>
                             <td>From</td>
                             <td>To</td>
                             <td>Departure Date</td>
                             <td>Arrival Date</td>
                             <td>Departure Time</td>
                             <td>Arrival Time</td>
+                            {/* added duration */}
+                            <td>Duration</td>
                             <td>Cabin</td>
+                            {/* added bussiness and economy */}
+                            <td>Economy Class Seats</td>
+                            <td>Bussiness Class Seats</td>
                             <td>Flight Charge</td>
                             <td> Actions</td>
                         </tr>
@@ -72,13 +79,20 @@ editFlight(flightId){
                                 <tr key={f.flightId}> 
                                 <td> {f.flightId}</td>
                                 <td> {f.flightNumber} </td>
+                                {/* added flight number */}
+                                <td> {f.flightName} </td>
                                 <td> {f.departureAirport} </td>
                                 <td> {f.destinationAirport} </td>
                                 <td> {f.departureDate} </td>
                                 <td> {f.arrivalDate} </td>
                                 <td> {f.departureTime} </td>
                                 <td> {f.arrivalTime} </td>
+                                {/* added duration */}
+                                <td> {f.duration} </td>
                                 <td> {f.cabin} </td>
+                                {/* added economy bussiness */}
+                                <td> {f.economy} </td>
+                                <td> {f.bussiness} </td>
                                 <td> {f.flightCharge} </td>
                                 <td>
                                 <button className="btn btn-success" onClick={() => this.editFlight(f.flightId)}>

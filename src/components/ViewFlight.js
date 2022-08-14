@@ -44,6 +44,10 @@ export default class ViewFlight extends Component{
                         </div>
                         <div className = "row">
                             {/* <label>  </label> */}
+                            <div>Duration: { this.state.flight.duration }</div>
+                        </div>
+                        <div className = "row">
+                            {/* <label>  </label> */}
                             <div>Flight Charge: { this.state.flight.flightCharge }</div>
                         </div>
                     </div>

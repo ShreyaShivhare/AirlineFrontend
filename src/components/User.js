@@ -62,6 +62,14 @@ export default class User extends Component {
     // f.preventDefault();
   }
 
+//   viewUser(flightId){
+//     this.props.history.push(`/viewUser/${flightId}`); //removed id
+// }
+// added flightId
+  passenger(flightId){
+    this.props.history.push(`/passenger/${flightId}`); //removed id
+}
+
   render() {
     return (
 
@@ -100,12 +108,16 @@ export default class User extends Component {
                 <tr>
                   <td>Flight Id</td>
                   <td>Flight Number</td>
+                  {/* added */}
+                  <td>Flight Name</td>
                   <td>Departure Airport</td>
                   <td>Arrival Airport</td>
                   <td>Departure Date</td>
                   <td>Arrival Date</td>
                   <td>Departure Time</td>
                   <td>Arrival Time</td>
+                  {/* added */}
+                  <td>Duration</td>
                   <td>Cabin</td>
                   <td>Flight Charge</td>
                   <td>Action</td>
@@ -118,16 +130,20 @@ export default class User extends Component {
                       <tr key={f.flightId}>
                         <td> {f.flightId}</td>
                         <td> {f.flightNumber} </td>
+                        {/* added */}
+                        <td> {f.flightName} </td>
                         <td> {f.departureAirport} </td>
                         <td> {f.destinationAirport} </td>
                         <td> {f.departureDate} </td>
                         <td> {f.arrivalDate} </td>
                         <td> {f.departureTime} </td>
                         <td> {f.arrivalTime} </td>
+                        {/* added */}
+                        <td> {f.duration} </td>
                         <td> {f.cabin} </td>
                         <td> {f.flightCharge} </td>
                         <td>
-                          <button className="button" name="Book" type="button" onClick={() => this.viewUser(f.flightId)}>Book</button>
+                          <button className="button" name="Book" type="button" onClick={() => this.passenger(f.flightId)}>Book</button>
                         </td>
                       </tr>
                   )

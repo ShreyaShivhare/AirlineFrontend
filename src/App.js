@@ -59,7 +59,8 @@ function App() {
           <Route path='/addFlight/:flightId'  component={CreateFlight}></Route>
 
           {/* Booking */}
-          <Route path='/passenger' component={PassengerList}></Route>
+          {/* added flight id in url */}
+          <Route path='/passenger/:flightId' component={PassengerList}></Route>
           <Route path='/fightDetails/:id' component={FlightDetails}></Route>
           <Route path='/booking' component={TicketBooking}></Route>
           <Route path='/pdetails' component={TicketDetails}></Route>
@@ -70,7 +71,7 @@ function App() {
           
           
           <Route path='/user'  component={User}></Route>
-          <Route path='/viewUser/:id'  component={ViewUser}></Route>
+          <Route path='/viewUser/:flightId'  component={ViewUser}></Route>
         </Switch>
         </div>
       </Router>
