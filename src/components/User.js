@@ -58,7 +58,7 @@ export default class User extends Component {
         });
         // f.preventDefault();//.catch(console.log);
       });
-    alert("Alert Data");
+    // alert("Alert Data");
     // f.preventDefault();
   }
 

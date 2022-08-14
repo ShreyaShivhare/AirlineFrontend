@@ -3,7 +3,7 @@ import React,{Component} from "react";
 // import UserService from "../service/UserService";
 import UserService from "../service/UserService";
 
-export default class ViewProduct extends Component{
+export default class ViewUser extends Component{
 
     constructor(props) {
         super(props)
@@ -40,10 +40,7 @@ export default class ViewProduct extends Component{
                         </div>
                         <div className = "row">
                             <label> To </label>
-                            <div> { this.state.user.to }</div>
-
-
-                           
+                            <div> { this.state.user.to }</div> 
             <hr></hr>
             <br></br>
             <br></br>
